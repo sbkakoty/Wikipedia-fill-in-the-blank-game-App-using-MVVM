@@ -41,42 +41,37 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         view.translatesAutoresizingMaskIntoConstraints = false
         view.isUserInteractionEnabled = true
         view.textDragInteraction?.isEnabled = false
+        view.font = UIFont.preferredFont(forTextStyle: .body)
         view.adjustsFontForContentSizeCategory = true
         view.isEditable = false
         return view
     }()
     
-    private lazy var fontAttributes: [NSAttributedString.Key: Any] = [
-        .font: UIFont.preferredFont(forTextStyle: .body),
-        .foregroundColor: UIColor.black,
-    ]
-    
     private var picker = UIPickerView()
     
     private lazy var buttonSubmit:UIButton = {
-        let buttonSubmit = UIButton()
-        buttonSubmit.translatesAutoresizingMaskIntoConstraints = false
-        buttonSubmit.isEnabled = false
-        buttonSubmit.setTitle("Submit Form", for: .normal)
-        buttonSubmit.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        buttonSubmit.titleLabel?.adjustsFontForContentSizeCategory = true
-        buttonSubmit.tag = 1
-        buttonSubmit.setTitleColor(UIColor.black, for: .normal)
-        buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#CCCCCC")
-        buttonSubmit.addTarget(self, action: #selector(self.submitAnswer), for: .touchUpInside)
-        return buttonSubmit
+        let view = UIButton().shadow()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isEnabled = false
+        view.setTitle("Submit", for: .normal)
+        view.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body).bold()
+        view.titleLabel?.adjustsFontForContentSizeCategory = true
+        view.setTitleColor(hexStringToUIColor(hex: "#999999"), for: .normal)
+        view.backgroundColor = UIColor.systemGray6
+        view.addTarget(self, action: #selector(self.submitAnswer), for: .touchUpInside)
+        return view
     }()
     
     private lazy var buttonReplayGame:UIButton = {
-        let buttonReplayGame = UIButton()
-        buttonReplayGame.translatesAutoresizingMaskIntoConstraints = false
-        buttonReplayGame.setTitle("Reload Paragraph", for: .normal)
-        buttonReplayGame.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        buttonReplayGame.titleLabel?.adjustsFontForContentSizeCategory = true
-        buttonReplayGame.setTitleColor(UIColor.black, for: .normal)
-        buttonReplayGame.backgroundColor = UIColor.systemGray6
-        buttonReplayGame.addTarget(self, action: #selector(self.replayGame), for: .touchUpInside)
-        return buttonReplayGame
+        let view = UIButton().shadow()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setTitle("Reload Data", for: .normal)
+        view.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body).bold()
+        view.titleLabel?.adjustsFontForContentSizeCategory = true
+        view.setTitleColor(UIColor.white, for: .normal)
+        view.backgroundColor = hexStringToUIColor(hex: "#33DDFF")
+        view.addTarget(self, action: #selector(self.replayGame), for: .touchUpInside)
+        return view
     }()
     
     private lazy var stackView:UIStackView = {
@@ -84,7 +79,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         stackView.axis  = NSLayoutConstraint.Axis.horizontal
         stackView.distribution  = .fillEqually
         stackView.alignment = UIStackView.Alignment.center
-        stackView.spacing   = 10.0
+        stackView.spacing   = 15.0
 
         stackView.addArrangedSubview(buttonReplayGame)
         stackView.addArrangedSubview(buttonSubmit)
@@ -94,6 +89,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     private lazy var indicator: UIActivityIndicatorView = {
         let indicator = UIActivityIndicatorView(style: .medium)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
         indicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         indicator.center = view.center
         return indicator
@@ -116,7 +112,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
             refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 
                 self.buttonSubmit.isEnabled = false
-                self.buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#CCCCCC")
+                self.buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#DDDDDD")
               }))
 
             present(refreshAlert, animated: true, completion: nil)
@@ -138,13 +134,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         // Do any additional setup after loading the view.
         
-        //let searchStringArray: [String] = ["Lion"]
-        
-        /*fillInTheBlankSentances.append("World's highest population densed city is _____________")
-        quizAnswers.append("Tokio")
-        filledWordsByUser.append("Mumbai")
-        isQuizAnswerCorrect.append("Wrong")*/
-        
+        //handle dark mode
         if #available(iOS 13.0, *) {
             view.overrideUserInterfaceStyle = .light;
         }
@@ -152,14 +142,17 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     func setNavigationBar() {
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        let titleLabel = UILabel()
         titleLabel.text = "Fill In The Blank Game"
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title2).bold()
+        //titleLabel.adjustsFontForContentSizeCategory = false
+        titleLabel.minimumScaleFactor = 1
         titleLabel.textColor = .white
         titleLabel.sizeToFit()
-        
+        titleLabel.shadowColor = UIColor.gray
+        titleLabel.shadowOffset = CGSize(width: 1, height: 1)
+        titleLabel.shadowColor = UIColor.gray
         self.navigationItem.titleView = titleLabel
     }
     
@@ -195,7 +188,6 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
             
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "vcViewScore") as! ViewScoreViewController
             
-            //vc.fillInTheBlankSentances = self.fillInTheBlankSentances
             vc.quizAnswers = self.quizAnswers
             vc.filledWordsByUser = self.filledWordsByUser
             vc.isQuizAnswerCorrect = self.isQuizAnswerCorrect
@@ -219,7 +211,6 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         view.addSubview(self.textView)
         view.addSubview(self.stackView)
         view.addSubview(self.indicator)
-        
         self.textView.text = ""
         self.textView.isUserInteractionEnabled = true
         self.textView.delegate = self
@@ -227,60 +218,66 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
     
     func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
+        let adjustedHeight = (buttonSubmit.titleLabel?.rectForText().height)! * AppConstants.sharedHeightMultiplier.uiControlHeightMultiplier
         
         sharedConstraints.append(contentsOf: [
-            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -70),
+            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -(adjustedHeight)),
             textView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             
-            buttonSubmit.heightAnchor.constraint(equalToConstant: 50),
-            buttonReplayGame.heightAnchor.constraint(equalToConstant: 50),
+            buttonSubmit.heightAnchor.constraint(equalTo: stackView.heightAnchor),
+            buttonReplayGame.heightAnchor.constraint(equalTo: stackView.heightAnchor),
             
-            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-            stackView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
-            stackView.heightAnchor.constraint(equalToConstant: 50),
+            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            stackView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -15),
+            stackView.heightAnchor.constraint(equalToConstant: adjustedHeight),
+            
+            self.indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
         regularConstraints.append(contentsOf: [
             
-            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -70),
+            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -(adjustedHeight)),
             
-            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            
+            self.indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
         compactConstraints.append(contentsOf: [
             
-            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 20),
-            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -20),
-            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -70),
+            textView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            textView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            textView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -(adjustedHeight)),
             
-            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            stackView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
+            stackView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            
+            self.indicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            self.indicator.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
     
     func layoutTrait(traitCollection:UITraitCollection) {
         if (!sharedConstraints[0].isActive) {
-           // activating shared constraints
            NSLayoutConstraint.activate(sharedConstraints)
         }
         if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
             if regularConstraints.count > 0 && regularConstraints[0].isActive {
                 NSLayoutConstraint.deactivate(regularConstraints)
             }
-            // activating compact constraints
             NSLayoutConstraint.activate(compactConstraints)
         } else {
             if compactConstraints.count > 0 && compactConstraints[0].isActive {
                 NSLayoutConstraint.deactivate(compactConstraints)
             }
-            // activating regular constraints
             NSLayoutConstraint.activate(regularConstraints)
         }
     }
@@ -288,7 +285,8 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func getWikiData(searchString: String?) {
         
         self.buttonSubmit.isEnabled = false
-        self.buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#CCCCCC")
+        self.buttonSubmit.backgroundColor = UIColor.systemGray6
+        self.buttonSubmit.setTitleColor(hexStringToUIColor(hex: "#999999"), for: .normal)
         
         self.indicator.startAnimating()
         
@@ -315,50 +313,45 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
                 }
             }
                 
-            var keyName: String?
             guard let data = data else { return }
-            let result = try? JSONDecoder().decode(WikiDTO.self, from: data)
+                
+            var decoded: [AnyHashable: Any]?
             
-            if result != nil {
+            do {
+                decoded = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyHashable: Any]
+            } catch {
+                let refreshAlert = UIAlertController(title: "Data Error", message: "Aw, Snap! Can't parse data.\nPlease try after sometime.", preferredStyle: UIAlertController.Style.alert)
+
+                refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                    
+                    return
+                  }))
                 
-                let keys = result!.query!.pages! as [String: Any]
-                
-                for (key, _) in keys {
-                    keyName = key
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.present(refreshAlert, animated: true, completion: nil)
+                }
+            }
+            let parseJSON = ParseJSON()
+            
+            let htmlText = parseJSON.parse(decoded!)
+            
+            let rawText = htmlText?.decodingUnicodeCharacters.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil).trimmingCharacters(in: .whitespacesAndNewlines)
+
+            if rawText!.count > 0 {
+                rawText?.enumerateLines { (paragraph, _) in
+                    
+                    self.rawParagraphs.append(paragraph)
                 }
                 
-                let htmlText = result!.query!.pages![keyName!]!.extract! as String
-                let rawText = htmlText.decodingUnicodeCharacters.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil).trimmingCharacters(in: .whitespacesAndNewlines)
-
-                print("rawText: \(rawText)")
-                if rawText.count > 0 {
-                    rawText.enumerateLines { (paragraph, _) in
-                        
-                        self.rawParagraphs.append(paragraph)
-                    }
-                    
-                    
-                    DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
-                        self.parseData()
-                    }
-                } else {
-                    
-                    let refreshAlert = UIAlertController(title: "Data Error", message: "Aw, Snap! Can't download data.\nPlease try after sometime.", preferredStyle: UIAlertController.Style.alert)
-
-                    refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
-                        
-                        return
-                      }))
-                    
-                    DispatchQueue.main.async {
-                        self.indicator.stopAnimating()
-                        self.present(refreshAlert, animated: true, completion: nil)
-                    }
+                
+                DispatchQueue.main.async {
+                    self.indicator.stopAnimating()
+                    self.parseData()
                 }
             } else {
                 
-                let refreshAlert = UIAlertController(title: "Data Error", message: "Aw, Snap! Can't parse data.\nPlease try again.", preferredStyle: UIAlertController.Style.alert)
+                let refreshAlert = UIAlertController(title: "Data Error", message: "Aw, Snap! Can't download data.\nPlease try after sometime.", preferredStyle: UIAlertController.Style.alert)
 
                 refreshAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                     
@@ -415,7 +408,8 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
             self.textView.attributedText = textViewString
             
             self.buttonSubmit.isEnabled = true
-            self.buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#CCFFCC")
+            self.buttonSubmit.backgroundColor = hexStringToUIColor(hex: "#0099DD")
+            self.buttonSubmit.setTitleColor(UIColor.white, for: .normal)
         } else {
             
             let refreshAlert = UIAlertController(title: "Data Error", message: "Aw, Snap! Can't parse data.\nPlease try again.", preferredStyle: UIAlertController.Style.alert)
@@ -432,14 +426,13 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         }
         
         fillWithWords = fillWithWords.unique().sorted()
-        
+        fillWithWords.shuffle()
         fillWithWords.insert("Pick One Word", at: 0)
     }
     
     func createFinalSentance(rawWordsArray: [String]) {
         
         var rawWords = rawWordsArray
-        //partsOfSpeechArray.shuffle()
         
     outerLop: for i in 0..<partsOfSpeechArray.count {
             
@@ -464,7 +457,13 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
                             self.quizAnswers.append(correctWord)
                             self.isQuizAnswerCorrect.append("Wrong")
                             
-                            let attributedString = NSMutableAttributedString(string: rawString, attributes: fontAttributes)
+                            let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+                            paragraphStyle.alignment = NSTextAlignment.justified
+                            let attributedString = NSMutableAttributedString(string: rawString, attributes: [
+                                .font: UIFont.preferredFont(forTextStyle: .body),
+                                .foregroundColor: UIColor.black,
+                                .paragraphStyle: paragraphStyle]
+                            )
                             let range = attributedString.mutableString.range(of: "_______________")
                             
                             attributedString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range)
@@ -495,7 +494,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         correctQuizAnswer = url[0]
         pickedQuizIndex = Int(url[1])!
         
-        print("\(pickedQuizIndex!)-\(correctQuizAnswer!)")
+        //print(correctQuizAnswer!)
         
         let beginning = self.textView.beginningOfDocument
         let rangeStart = self.textView.position(from: beginning, offset: characterRange.location)
@@ -564,7 +563,7 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
         var pickerLabel: UILabel? = (view as? UILabel)
         if pickerLabel == nil {
             pickerLabel = UILabel()
-            pickerLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+            pickerLabel?.font = UIFont.preferredFont(forTextStyle: .body)
             pickerLabel?.adjustsFontForContentSizeCategory = true
             pickerLabel?.textColor = UIColor.black
             pickerLabel?.textAlignment = .center
@@ -627,73 +626,5 @@ class StartGameViewController: UIViewController, UIPickerViewDataSource, UIPicke
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-}
-
-extension Sequence {
-    func joined(with separator: NSAttributedString) -> NSAttributedString {
-        return self.reduce(NSMutableAttributedString()) {
-            (r, e) in
-            if r.length > 0 {
-                r.append(separator)
-            }
-            r.append(e as! NSAttributedString)
-            return r
-        }
-    }
-
-    func joined(with separator: String = "") -> NSAttributedString {
-        return self.joined(with: NSAttributedString(string: separator))
-    }
-}
-
-extension String {
-    var decodingUnicodeCharacters: String { applyingTransform(.init("Hex-Any"), reverse: false) ?? "" }
-    
-    func checkPartsOfSpeech(partOfSpeech: String) -> Bool {
-        
-        var isFound: Bool = false
-        
-        let options: NSLinguisticTagger.Options = [.omitWhitespace, .omitPunctuation, .joinNames]
-        let schemes = NSLinguisticTagger.availableTagSchemes(forLanguage: "en-in")
-        let range = NSRange(location: 0, length: self.count)
-        let tagger = NSLinguisticTagger(tagSchemes: schemes, options: Int(options.rawValue))
-        tagger.string = self
-        tagger.enumerateTags(in: range, scheme: .nameTypeOrLexicalClass, options: options) { (tag, tokenRange, _, _) in
-            if let tag = tag {
-                
-                print("Word: \(self) -> tag.rawValue: \(tag.rawValue)")
-                if tag.rawValue == partOfSpeech {
-                    
-                    isFound = true
-                    return
-                }
-            }
-        }
-        
-        return isFound
-    }
-    
-    func split(usingRegex pattern: String) -> [String] {
-        let regex = try! NSRegularExpression(pattern: pattern, options: .allowCommentsAndWhitespace)
-        let matches = regex.matches(in: self, range: NSRange(startIndex..., in: self))
-        
-        let splits = [startIndex]
-            + matches
-                .map { Range($0.range, in: self)! }
-                .flatMap { [ $0.lowerBound, $0.upperBound ] }
-            + [endIndex]
-
-        return zip(splits, splits.dropFirst())
-            .map {
-                String(self[$0 ..< $1])
-            }
-    }
-}
-
-extension Sequence where Iterator.Element: Hashable {
-    func unique() -> [Iterator.Element] {
-        var seen: Set<Iterator.Element> = []
-        return filter { seen.insert($0).inserted }
     }
 }

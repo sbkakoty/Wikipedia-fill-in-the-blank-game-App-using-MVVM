@@ -10,15 +10,18 @@
 * Programmatic UI without using XIB and Storyboard
 * Data binding
 
-## References
-* MVVM IOS 
-    https://medium.com/@abhilash.mathur1891/mvvm-in-ios-swift-aa1448a66fb4
-    https://www.raywenderlich.com/6733535-ios-mvvm-tutorial-refactoring-from-mvc
+## Features
+* Supports iPhone & iPad
+* Supports portrait & landscape mode
+* Supports dark mode
 
 ## Requirements
 * Xcode Version 13.4.1+  Swift 5.0+
 * Cocoapods
 * Alamofire 4.7+
+    Used for HTTP request
+* Internet connectivity
+    Used to pull Wekipedia pages using Weki API request.
 
 ## iOS version support
 * iOS 15.5+

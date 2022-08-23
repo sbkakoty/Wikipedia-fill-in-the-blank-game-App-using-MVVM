@@ -6,6 +6,10 @@
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
 		<false/>
+        <key>UIViewControllerBasedStatusBarAppearance</key>
+        <true/>
+        <key>UIStatusBarStyle</key>
+        <string>UIStatusBarStyleLightContent</string>
 		<key>UISceneConfigurations</key>
 		<dict>
 			<key>UIWindowSceneSessionRoleApplication</key>

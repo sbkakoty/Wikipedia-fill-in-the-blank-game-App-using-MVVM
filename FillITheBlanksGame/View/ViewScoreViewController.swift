@@ -28,11 +28,11 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
     private lazy var scoreLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = hexStringToUIColor(hex: "#CCFFCC")
-        view.textColor = UIColor.black
+        view.backgroundColor = hexStringToUIColor(hex: "#33DDFF")
+        view.textColor = UIColor.white
         view.textAlignment = .center
-        view.font = UIFont.preferredFont(forTextStyle: .body)
-        view.adjustsFontForContentSizeCategory = true
+        view.font = UIFont.preferredFont(forTextStyle: .body).bold()
+        //view.adjustsFontForContentSizeCategory = true
         return view
     }()
     
@@ -45,7 +45,6 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
             view.overrideUserInterfaceStyle = .light;
         }
         
-        print("quizAnswers: \(quizAnswers!)")
         setupUI()
         setupConstraints()
 
@@ -56,24 +55,21 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
     func setNavigationBar() {
         
         let button = UIButton.init(type: .custom)
-        button.setTitle("Replay", for: UIControl.State.normal)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .body)
-        button.titleLabel?.adjustsFontForContentSizeCategory = true
+        button.setTitle("Replay", for: .normal)
+        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title3)
+        button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20)
         button.addTarget(self, action:#selector(back), for:.touchUpInside)
-        button.frame = CGRect.init(x: 0, y: 0, width: 20, height: 20) //CGRectMake(0, 0, 30, 30)
         let doneItem = UIBarButtonItem.init(customView: button)
         self.navigationItem.leftBarButtonItem = doneItem
         
-        let titleLabel = UILabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 44))
+        let titleLabel = UILabel().shadow()
         titleLabel.text = "View Score"
         titleLabel.textAlignment = .center
-        titleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
-        titleLabel.adjustsFontForContentSizeCategory = true
+        titleLabel.font = UIFont.preferredFont(forTextStyle: .title2).bold()
+        //titleLabel.adjustsFontForContentSizeCategory = false
+        titleLabel.minimumScaleFactor = 1
         titleLabel.textColor = .white
-        titleLabel.sizeToFit()
-        
         self.navigationItem.titleView = titleLabel
-        self.navigationItem.hidesBackButton = true
     }
     
     func setupUI() {
@@ -81,8 +77,7 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
         setNavigationBar()
         
         self.scoreTableView.register(UINib(nibName: "ScoreTableViewCell", bundle: nil), forCellReuseIdentifier: "cellViewScore")
-        self.scoreTableView.rowHeight = 65.0
-        self.scoreTableView.estimatedRowHeight = 65.0
+        self.scoreTableView.rowHeight = UITableView.automaticDimension;
         self.scoreTableView.separatorStyle = .none
         self.scoreTableView.isAccessibilityElement = false
         
@@ -97,57 +92,59 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
     
     func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
+        let adjustedHeight = scoreLabel.rectForText().height * AppConstants.sharedHeightMultiplier.uiControlHeightMultiplier
         
         sharedConstraints.append(contentsOf: [
             scoreTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
             scoreTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -75),
-            scoreTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 5),
+            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -adjustedHeight),
+            scoreTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             
             scoreLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
             scoreLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
             scoreLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            scoreLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -10),
-            scoreLabel.heightAnchor.constraint(equalToConstant: 50),
+            scoreLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -15),
+            scoreLabel.heightAnchor.constraint(equalToConstant: adjustedHeight),
         ])
         
         regularConstraints.append(contentsOf: [
             
-            scoreTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            scoreTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -75),
+            scoreTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
+            scoreTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
+            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -adjustedHeight),
+            scoreTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             
-            scoreLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            scoreLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            scoreLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
+            scoreLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            scoreLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -15),
         ])
         
         compactConstraints.append(contentsOf: [
             
             scoreTableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 10),
             scoreTableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -10),
-            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -75),
+            scoreTableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -adjustedHeight),
+            scoreTableView.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 10),
             
             scoreLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 15),
             scoreLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -15),
+            scoreLabel.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor, constant: -15),
         ])
     }
     
     func layoutTrait(traitCollection:UITraitCollection) {
         if (!sharedConstraints[0].isActive) {
-           // activating shared constraints
            NSLayoutConstraint.activate(sharedConstraints)
         }
         if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
             if regularConstraints.count > 0 && regularConstraints[0].isActive {
                 NSLayoutConstraint.deactivate(regularConstraints)
             }
-            // activating compact constraints
             NSLayoutConstraint.activate(compactConstraints)
         } else {
             if compactConstraints.count > 0 && compactConstraints[0].isActive {
                 NSLayoutConstraint.deactivate(compactConstraints)
             }
-            // activating regular constraints
             NSLayoutConstraint.activate(regularConstraints)
         }
     }
@@ -166,13 +163,12 @@ class ViewScoreViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellViewScore") as! ScoreTableViewCell
         
-        //cell.textViewSentance?.text = fillInTheBlankSentances?[indexPath.row] ?? ""
-        cell.labelUserAnswer?.text = "Answer \((indexPath.row + 1)): \(filledWordsByUser![indexPath.row])"
+        cell.labelUserAnswer?.text = "Answer \((indexPath.row + 1)). \(filledWordsByUser![indexPath.row])"
         
         if isQuizAnswerCorrect![indexPath.row] == "Wrong" {
-            cell.labelResult?.text = "Result: \(isQuizAnswerCorrect![indexPath.row]), Correct Answer: \(quizAnswers![indexPath.row])"
+            cell.labelResult?.text = "\(isQuizAnswerCorrect![indexPath.row]), Correct Answer: \(quizAnswers![indexPath.row])"
         } else {
-            cell.labelResult?.text = "Result: \(isQuizAnswerCorrect![indexPath.row])"
+            cell.labelResult?.text = "\(isQuizAnswerCorrect![indexPath.row])"
         }
         
         return cell
