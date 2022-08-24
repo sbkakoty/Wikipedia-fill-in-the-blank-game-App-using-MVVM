@@ -15,16 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        if #available(iOS 15, *) {
-            let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithOpaqueBackground()
-            navigationBarAppearance.titleTextAttributes = [
-                NSAttributedString.Key.foregroundColor : UIColor.white
-            ]
-            navigationBarAppearance.backgroundColor = hexStringToUIColor(hex: "#99CC99")
-            UINavigationBar.appearance().standardAppearance = navigationBarAppearance
-            UINavigationBar.appearance().compactAppearance = navigationBarAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        let newNavBarAppearance = customNavBarAppearance()
+                
+        let appearance = UINavigationBar.appearance()
+        appearance.scrollEdgeAppearance = newNavBarAppearance
+        appearance.compactAppearance = newNavBarAppearance
+        appearance.standardAppearance = newNavBarAppearance
+        
+        if #available(iOS 15.0, *) {
+            appearance.compactScrollEdgeAppearance = newNavBarAppearance
         }
         
         return true
@@ -44,6 +43,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
-
+    @available(iOS 13.0, *)
+    func customNavBarAppearance() -> UINavigationBarAppearance {
+        let customNavBarAppearance = UINavigationBarAppearance()
+        
+        // Apply a red background.
+        customNavBarAppearance.configureWithOpaqueBackground()
+        customNavBarAppearance.backgroundColor = hexStringToUIColor(hex: "#00CCFF")
+        
+        // Apply white colored normal and large titles.
+        customNavBarAppearance.titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .title1)]
+        customNavBarAppearance.largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white, NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .largeTitle)]
+        
+        return customNavBarAppearance
+    }
 }
 

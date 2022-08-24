@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		961AC4FB707B51EA6CC6BB0A /* Pods_FillITheBlanksGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998BEDC468D99C5B65C2944E /* Pods_FillITheBlanksGame.framework */; };
 		FA3B671928B34DF5000C5823 /* WikiTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671828B34DF5000C5823 /* WikiTitles.swift */; };
 		FA3B671B28B34EC6000C5823 /* PartsOfSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671A28B34EC6000C5823 /* PartsOfSpeech.swift */; };
+		FA3B671D28B3D2D5000C5823 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671C28B3D2D5000C5823 /* String+Extensions.swift */; };
+		FA3B671F28B3D343000C5823 /* Sequence+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671E28B3D343000C5823 /* Sequence+Extensions.swift */; };
+		FA3B672128B3D381000C5823 /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B672028B3D381000C5823 /* UIFont+Extensions.swift */; };
 		FA92BABA28AF49670094FEB7 /* WikiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92BAB928AF49670094FEB7 /* WikiService.swift */; };
 		FA92BABD28AF63230094FEB7 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92BABC28AF63230094FEB7 /* AppConfig.swift */; };
 		FA92BABF28AF6A0C0094FEB7 /* WikiViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA92BABE28AF6A0B0094FEB7 /* WikiViewModel.swift */; };
@@ -29,6 +31,11 @@
 		FAD486A928B21C530026DD7A /* ScoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD486A728B21C530026DD7A /* ScoreTableViewCell.xib */; };
 		FAD486AC28B29DC20026DD7A /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD486AB28B29DC20026DD7A /* Helper.swift */; };
 		FADDA47B28B1EA5400A96ECC /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = FADDA47A28B1EA5400A96ECC /* Reachability.swift */; };
+		FAE4305F28B47A8600FF522F /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4305E28B47A8600FF522F /* UIButton+Extension.swift */; };
+		FAE4306128B47BA900FF522F /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4306028B47BA900FF522F /* UILabel+Extension.swift */; };
+		FAE4306328B492DE00FF522F /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4306228B492DE00FF522F /* AppConstants.swift */; };
+		FAE4306528B49A7600FF522F /* Wiki.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE4306428B49A7600FF522F /* Wiki.swift */; };
+		FAE4306D28B4B80500FF522F /* ParseJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE4306C28B4B80500FF522F /* ParseJSON.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,11 +56,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		7F06DCAECE436612C049F868 /* Pods-FillITheBlanksGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillITheBlanksGame.debug.xcconfig"; path = "Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame.debug.xcconfig"; sourceTree = "<group>"; };
-		998BEDC468D99C5B65C2944E /* Pods_FillITheBlanksGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FillITheBlanksGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9BC48BAD3BC3637FD9C0D769 /* Pods-FillITheBlanksGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillITheBlanksGame.release.xcconfig"; path = "Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame.release.xcconfig"; sourceTree = "<group>"; };
 		FA3B671828B34DF5000C5823 /* WikiTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiTitles.swift; sourceTree = "<group>"; };
 		FA3B671A28B34EC6000C5823 /* PartsOfSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsOfSpeech.swift; sourceTree = "<group>"; };
+		FA3B671C28B3D2D5000C5823 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		FA3B671E28B3D343000C5823 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
+		FA3B672028B3D381000C5823 /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		FA92BAB928AF49670094FEB7 /* WikiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiService.swift; sourceTree = "<group>"; };
 		FA92BABC28AF63230094FEB7 /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		FA92BABE28AF6A0B0094FEB7 /* WikiViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewModel.swift; sourceTree = "<group>"; };
@@ -77,6 +84,13 @@
 		FAD486A728B21C530026DD7A /* ScoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScoreTableViewCell.xib; sourceTree = "<group>"; };
 		FAD486AB28B29DC20026DD7A /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		FADDA47A28B1EA5400A96ECC /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		FAE4305E28B47A8600FF522F /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		FAE4306028B47BA900FF522F /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
+		FAE4306228B492DE00FF522F /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		FAE4306428B49A7600FF522F /* Wiki.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wiki.swift; sourceTree = "<group>"; };
+		FAE4306728B4AC2A00FF522F /* FillITheBlanksGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FillITheBlanksGame-Bridging-Header.h"; sourceTree = "<group>"; };
+		FAE4306B28B4B7E500FF522F /* ParseJSON.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ParseJSON.h; sourceTree = "<group>"; };
+		FAE4306C28B4B80500FF522F /* ParseJSON.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParseJSON.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,7 +98,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				961AC4FB707B51EA6CC6BB0A /* Pods_FillITheBlanksGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,18 +121,8 @@
 		0B649FF7E32F0CF06FFF9ACF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				7F06DCAECE436612C049F868 /* Pods-FillITheBlanksGame.debug.xcconfig */,
-				9BC48BAD3BC3637FD9C0D769 /* Pods-FillITheBlanksGame.release.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		46BE6AEF83ADEF7BE14A6F4C /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				998BEDC468D99C5B65C2944E /* Pods_FillITheBlanksGame.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA92BAB828AF49500094FEB7 /* Services */ = {
@@ -136,7 +139,7 @@
 				FABBC7D928ACB2AC00B4F303 /* AppDelegate.swift */,
 				FABBC7DB28ACB2AC00B4F303 /* SceneDelegate.swift */,
 				FA92BABC28AF63230094FEB7 /* AppConfig.swift */,
-				FADDA47A28B1EA5400A96ECC /* Reachability.swift */,
+				FAE4306728B4AC2A00FF522F /* FillITheBlanksGame-Bridging-Header.h */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -149,7 +152,6 @@
 				FABBC7F928ACB2B000B4F303 /* FillITheBlanksGameUITests */,
 				FABBC7D728ACB2AC00B4F303 /* Products */,
 				0B649FF7E32F0CF06FFF9ACF /* Pods */,
-				46BE6AEF83ADEF7BE14A6F4C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,6 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				FA92BAC028AF8D2E0094FEB7 /* WikiDTO.swift */,
+				FAE4306428B49A7600FF522F /* Wiki.swift */,
+				FAE4306B28B4B7E500FF522F /* ParseJSON.h */,
+				FAE4306C28B4B80500FF522F /* ParseJSON.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -231,6 +236,13 @@
 				FAD486AB28B29DC20026DD7A /* Helper.swift */,
 				FA3B671828B34DF5000C5823 /* WikiTitles.swift */,
 				FA3B671A28B34EC6000C5823 /* PartsOfSpeech.swift */,
+				FA3B671C28B3D2D5000C5823 /* String+Extensions.swift */,
+				FA3B671E28B3D343000C5823 /* Sequence+Extensions.swift */,
+				FA3B672028B3D381000C5823 /* UIFont+Extensions.swift */,
+				FAE4305E28B47A8600FF522F /* UIButton+Extension.swift */,
+				FAE4306028B47BA900FF522F /* UILabel+Extension.swift */,
+				FADDA47A28B1EA5400A96ECC /* Reachability.swift */,
+				FAE4306228B492DE00FF522F /* AppConstants.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -242,11 +254,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FABBC80028ACB2B000B4F303 /* Build configuration list for PBXNativeTarget "FillITheBlanksGame" */;
 			buildPhases = (
-				29793E23E32808F8083ECFA7 /* [CP] Check Pods Manifest.lock */,
 				FABBC7D228ACB2AC00B4F303 /* Sources */,
 				FABBC7D328ACB2AC00B4F303 /* Frameworks */,
 				FABBC7D428ACB2AC00B4F303 /* Resources */,
-				11C6C5B09DB1BC410055028B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -305,6 +315,7 @@
 				TargetAttributes = {
 					FABBC7D528ACB2AC00B4F303 = {
 						CreatedOnToolsVersion = 13.4.1;
+						LastSwiftMigration = 1340;
 					};
 					FABBC7EB28ACB2B000B4F303 = {
 						CreatedOnToolsVersion = 13.4.1;
@@ -364,48 +375,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		11C6C5B09DB1BC410055028B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		29793E23E32808F8083ECFA7 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-FillITheBlanksGame-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		FABBC7D228ACB2AC00B4F303 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -416,15 +385,23 @@
 				FAD486A128B205600026DD7A /* ViewScoreViewController.swift in Sources */,
 				FABBC7DA28ACB2AC00B4F303 /* AppDelegate.swift in Sources */,
 				FA92BAC128AF8D2E0094FEB7 /* WikiDTO.swift in Sources */,
+				FAE4305F28B47A8600FF522F /* UIButton+Extension.swift in Sources */,
 				FABBC7DC28ACB2AC00B4F303 /* SceneDelegate.swift in Sources */,
 				FA3B671928B34DF5000C5823 /* WikiTitles.swift in Sources */,
+				FAE4306128B47BA900FF522F /* UILabel+Extension.swift in Sources */,
 				FA3B671B28B34EC6000C5823 /* PartsOfSpeech.swift in Sources */,
+				FA3B671F28B3D343000C5823 /* Sequence+Extensions.swift in Sources */,
+				FAE4306528B49A7600FF522F /* Wiki.swift in Sources */,
 				FADDA47B28B1EA5400A96ECC /* Reachability.swift in Sources */,
 				FA92BABF28AF6A0C0094FEB7 /* WikiViewModel.swift in Sources */,
+				FAE4306D28B4B80500FF522F /* ParseJSON.m in Sources */,
+				FA3B671D28B3D2D5000C5823 /* String+Extensions.swift in Sources */,
 				FABBC80F28ACB4F400B4F303 /* SettingsViewController.swift in Sources */,
 				FAD486A828B21C530026DD7A /* ScoreTableViewCell.swift in Sources */,
+				FA3B672128B3D381000C5823 /* UIFont+Extensions.swift in Sources */,
 				FABBC81128ACB51100B4F303 /* StartGameViewController.swift in Sources */,
 				FAD486AC28B29DC20026DD7A /* Helper.swift in Sources */,
+				FAE4306328B492DE00FF522F /* AppConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,10 +573,10 @@
 		};
 		FABBC80128ACB2B000B4F303 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F06DCAECE436612C049F868 /* Pods-FillITheBlanksGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24F82U865Y;
@@ -619,6 +596,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/FillInTheBlanksGame/FillITheBlanksGame/FillITheBlanksGame/Application/FillITheBlanksGame-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -626,10 +605,10 @@
 		};
 		FABBC80228ACB2B000B4F303 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9BC48BAD3BC3637FD9C0D769 /* Pods-FillITheBlanksGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 24F82U865Y;
@@ -649,6 +628,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/FillInTheBlanksGame/FillITheBlanksGame/FillITheBlanksGame/Application/FillITheBlanksGame-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

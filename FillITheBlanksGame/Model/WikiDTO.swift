@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct WikiDTO: Codable {
+/*struct WikiDTO: Codable {
   let batchcomplete: String?
   let query: Query?
 }
 
 struct Query: Codable {
   let normalized: [Normalized]?
-  let pages: [String:Pages]? // <- I can get to here
+  let pages: [String:Pages]?
 }
 
 struct Normalized: Codable {
@@ -28,6 +28,14 @@ struct Pages: Codable {
 }
 
 struct Thumbnail: Codable {
-  let source: String? // <- But I want to grab this
+  let source: String?
   let width, height: Int?
 }
+
+// MARK: - Mappings to Domain
+
+extension Query {
+    func toEntity() -> Wiki {
+        return .init(pages: pages)
+    }
+}*/

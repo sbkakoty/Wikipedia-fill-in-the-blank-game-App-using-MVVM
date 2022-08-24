@@ -9,8 +9,7 @@ import Foundation
 
 final class WikiTitles {
     
-    //"Lion", "Tiger", "Elephant", "Wolf", "Dinosaur", "Peacock", 
-    let wikiTitles: [String] = ["Horse"]
+    let wikiTitles: [String] = ["Lion", "Tiger", "Elephant", "Wolf", "Dinosaur", "Peacock", "Horse"]
     static let sharedWikiTitles = WikiTitles()
     
     private init(){}
