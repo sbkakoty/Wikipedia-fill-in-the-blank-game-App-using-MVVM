@@ -2,12 +2,12 @@
 
 ## Layers
 * **Model Layer
-* **View
-* **View Model
+* **View Layer
+* **View Model Layer
 
 ## Includes
 * MVVM
-* Programmatic UI without using XIB and Storyboard
+* XIB and Storyboard
 * Data binding
 
 ## Features
