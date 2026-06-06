@@ -3,9 +3,9 @@ name: iOS Continuous Integration
 # 1. Define when this pipeline should run
 on:
   push:
-    branches: [ main ]
+    branches: [ main, dev ]
   pull_request:
-    branches: [ main ]
+    branches: [ main, dev ]
 
 jobs:
   build-and-test:
@@ -40,9 +40,10 @@ jobs:
 
     # 7. Execute the Test Suite using an iPhone Simulator
     # CRITICAL: Replace 'YOUR_SCHEME_NAME' with your real Xcode project scheme!
-    - name: Run Xcode Unit Tests
+    - name: Run Unit and UI Tests
       run: |
         xcodebuild test \
+          -project Wikipedia-fill-in-the-blank-game-App-using-MVVM.xcodeproj \
           -scheme FillITheBlanksGame \
-          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -destination 'platform=iOS Simulator,name=Any iOS Simulator Device' \
           -enableCodeCoverage YES
