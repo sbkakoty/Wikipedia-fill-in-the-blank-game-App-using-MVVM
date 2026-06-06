@@ -43,10 +43,9 @@ jobs:
   
     # 7. Execute the Test Suite using an iPhone Simulator
     # CRITICAL: Replace 'YOUR_SCHEME_NAME' with your real Xcode project scheme!
-    - name: Run Unit and UI Tests
+    - name: Run Tests
       run: |
         xcodebuild test \
           -project FillITheBlanksGame.xcodeproj \
           -scheme FillITheBlanksGame \
-          -destination 'generic/platform=iOS Simulator' \
-          -enableCodeCoverage YES
+          -destination 'platform=iOS Simulator,name=iPhone 16'
