@@ -48,5 +48,5 @@ jobs:
         xcodebuild test \
           -project FillITheBlanksGame.xcodeproj \
           -scheme FillITheBlanksGame \
-          -destination 'platform:iOS Simulator, name:Any iOS Simulator Device' \
+          -destination 'platform=iOS Simulator, name=Any iOS Simulator Device, OS=26' \
           -enableCodeCoverage YES
