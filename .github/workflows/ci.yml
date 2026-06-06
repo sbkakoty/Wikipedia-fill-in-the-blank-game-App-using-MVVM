@@ -48,5 +48,5 @@ jobs:
         xcodebuild test \
           -project FillITheBlanksGame.xcodeproj \
           -scheme FillITheBlanksGame \
-          -destination 'platform=iOS Simulator,name=iPhone 16 Pro Max,OS=26' \
+          -destination 'platform=iOS Simulator, id=dvtdevice-DVTiOSDeviceSimulatorPlaceholder-iphonesimulator:placeholder, name=Any iOS Simulator Device' \
           -enableCodeCoverage YES
