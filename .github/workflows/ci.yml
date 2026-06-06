@@ -1,0 +1,48 @@
+name: iOS Continuous Integration
+
+# 1. Define when this pipeline should run
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    # 2. iOS compilation requires a physical macOS environment
+    runs-on: macos-latest
+
+    steps:
+    # 3. Pull down the repository code onto the virtual runner
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    # 4. Select and set the exact Xcode version required
+    - name: Select Xcode Version
+      run: |
+        sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+        xcodebuild -version
+
+    # 5. Optional: Resolve Swift Package Manager Dependencies
+    - name: Resolve Swift Packages
+      run: |
+        xcodebuild -resolvePackageDependencies
+
+    # 6. Optional: Run SwiftLint to catch syntax formatting bugs
+    # Remove this step if you do not use SwiftLint in your project
+    # - name: Run SwiftLint Audit
+    #  run: |
+    #    if which swiftlint >/dev/null; then
+    #      swiftlint
+    #    else
+    #      echo "warning: SwiftLint not installed on runner, skipping audit."
+    #    fi
+
+    # 7. Execute the Test Suite using an iPhone Simulator
+    # CRITICAL: Replace 'YOUR_SCHEME_NAME' with your real Xcode project scheme!
+    - name: Run Xcode Unit Tests
+      run: |
+        xcodebuild test \
+          -scheme YOUR_SCHEME_NAME \
+          -destination 'platform=iOS Simulator,name=iPhone 15,OS=latest' \
+          -enableCodeCoverage YES
