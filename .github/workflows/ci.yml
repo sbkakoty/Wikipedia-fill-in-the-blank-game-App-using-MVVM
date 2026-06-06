@@ -1,52 +1,49 @@
 name: iOS Continuous Integration
 
-# 1. Define when this pipeline should run
 on:
   push:
-    branches: [ main, dev ]
+    branches:
+      - main
+      - dev
+
   pull_request:
-    branches: [ main, dev ]
+    branches:
+      - main
+      - dev
 
 jobs:
   build-and-test:
-    # 2. iOS compilation requires a physical macOS environment
     runs-on: macos-latest
 
     steps:
-    # 3. Pull down the repository code onto the virtual runner
-    - name: Checkout Repository
-      uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-    # 4. Select and set the exact Xcode version required
-    #- name: Select Xcode Version
-    #  run: |
-    #    sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
-    #    xcodebuild -version
+      - name: Show Xcode Version
+        run: |
+          xcodebuild -version
 
-    # 5. Optional: Resolve Swift Package Manager Dependencies
-    - name: Resolve Swift Packages
-      run: |
-        xcodebuild -resolvePackageDependencies
+      - name: Show Available Simulators
+        run: |
+          xcrun simctl list devices available
 
-    # 6. Optional: Run SwiftLint to catch syntax formatting bugs
-    # Remove this step if you do not use SwiftLint in your project
-    # - name: Run SwiftLint Audit
-    #  run: |
-    #    if which swiftlint >/dev/null; then
-    #      swiftlint
-    #    else
-    #      echo "warning: SwiftLint not installed on runner, skipping audit."
-    #    fi
+      - name: Resolve Swift Packages
+        run: |
+          xcodebuild \
+            -resolvePackageDependencies \
+            -project FillITheBlanksGame.xcodeproj
 
-    - name: Show Destinations
-      run: xcodebuild -scheme FillITheBlanksGame -showdestinations
-  
-    # 7. Execute the Test Suite using an iPhone Simulator
-    # CRITICAL: Replace 'YOUR_SCHEME_NAME' with your real Xcode project scheme!
-    - name: Run Unit and UI Tests
-      run: |
-        xcodebuild test \
-          -project FillITheBlanksGame.xcodeproj \
-          -scheme FillITheBlanksGame \
-          -destination 'platform=iOS Simulator,name=Any iOS Simulator Device' \
-          -enableCodeCoverage YES
+      - name: Show Destinations
+        run: |
+          xcodebuild \
+            -project FillITheBlanksGame.xcodeproj \
+            -scheme FillITheBlanksGame \
+            -showdestinations
+
+      - name: Run Tests
+        run: |
+          xcodebuild test \
+            -project FillITheBlanksGame.xcodeproj \
+            -scheme FillITheBlanksGame \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
+            -enableCodeCoverage YES
