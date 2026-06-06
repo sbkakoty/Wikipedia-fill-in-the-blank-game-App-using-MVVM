@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A10D52376A30C2345EDE60CE /* Pods_FillITheBlanksGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABEB9064C0E19BD6689C53F1 /* Pods_FillITheBlanksGame.framework */; };
 		FA3B671928B34DF5000C5823 /* WikiTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671828B34DF5000C5823 /* WikiTitles.swift */; };
 		FA3B671B28B34EC6000C5823 /* PartsOfSpeech.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671A28B34EC6000C5823 /* PartsOfSpeech.swift */; };
 		FA3B671D28B3D2D5000C5823 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3B671C28B3D2D5000C5823 /* String+Extensions.swift */; };
@@ -56,6 +57,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10AF8D4B4CF24862B27DCE89 /* Pods-FillITheBlanksGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillITheBlanksGame.debug.xcconfig"; path = "Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame.debug.xcconfig"; sourceTree = "<group>"; };
+		16FD15952FD4262900500F15 /* FillITheBlanksGame-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FillITheBlanksGame-Bridging-Header.h"; sourceTree = "<group>"; };
+		9050D7314363EAB1CF7EFECD /* Pods-FillITheBlanksGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FillITheBlanksGame.release.xcconfig"; path = "Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame.release.xcconfig"; sourceTree = "<group>"; };
+		ABEB9064C0E19BD6689C53F1 /* Pods_FillITheBlanksGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FillITheBlanksGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA3B671828B34DF5000C5823 /* WikiTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiTitles.swift; sourceTree = "<group>"; };
 		FA3B671A28B34EC6000C5823 /* PartsOfSpeech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartsOfSpeech.swift; sourceTree = "<group>"; };
 		FA3B671C28B3D2D5000C5823 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
@@ -98,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A10D52376A30C2345EDE60CE /* Pods_FillITheBlanksGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +127,18 @@
 		0B649FF7E32F0CF06FFF9ACF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				10AF8D4B4CF24862B27DCE89 /* Pods-FillITheBlanksGame.debug.xcconfig */,
+				9050D7314363EAB1CF7EFECD /* Pods-FillITheBlanksGame.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		A18338618A32A53685A8E4DD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ABEB9064C0E19BD6689C53F1 /* Pods_FillITheBlanksGame.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		FA92BAB828AF49500094FEB7 /* Services */ = {
@@ -152,6 +168,7 @@
 				FABBC7F928ACB2B000B4F303 /* FillITheBlanksGameUITests */,
 				FABBC7D728ACB2AC00B4F303 /* Products */,
 				0B649FF7E32F0CF06FFF9ACF /* Pods */,
+				A18338618A32A53685A8E4DD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -178,6 +195,7 @@
 				FABBC7E228ACB2AF00B4F303 /* Assets.xcassets */,
 				FABBC7E428ACB2AF00B4F303 /* LaunchScreen.storyboard */,
 				FABBC7E728ACB2AF00B4F303 /* Info.plist */,
+				16FD15952FD4262900500F15 /* FillITheBlanksGame-Bridging-Header.h */,
 			);
 			path = FillITheBlanksGame;
 			sourceTree = "<group>";
@@ -254,9 +272,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FABBC80028ACB2B000B4F303 /* Build configuration list for PBXNativeTarget "FillITheBlanksGame" */;
 			buildPhases = (
+				367BFF152231A47173CE3972 /* [CP] Check Pods Manifest.lock */,
 				FABBC7D228ACB2AC00B4F303 /* Sources */,
 				FABBC7D328ACB2AC00B4F303 /* Frameworks */,
 				FABBC7D428ACB2AC00B4F303 /* Resources */,
+				22488F53C300EC103FC3C736 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -374,6 +394,52 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22488F53C300EC103FC3C736 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FillITheBlanksGame/Pods-FillITheBlanksGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		367BFF152231A47173CE3972 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FillITheBlanksGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FABBC7D228ACB2AC00B4F303 /* Sources */ = {
@@ -507,7 +573,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -561,7 +627,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -573,13 +639,14 @@
 		};
 		FABBC80128ACB2B000B4F303 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 10AF8D4B4CF24862B27DCE89 /* Pods-FillITheBlanksGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = DK55D35UB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FillITheBlanksGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -596,7 +663,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/FillInTheBlanksGame/FillITheBlanksGame/FillITheBlanksGame/Application/FillITheBlanksGame-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/sonjoyborkakoty/Documents/Wikipedia-fill-in-the-blank-game-App-using-MVVM-main/FillITheBlanksGame/FillITheBlanksGame-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -605,13 +672,14 @@
 		};
 		FABBC80228ACB2B000B4F303 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9050D7314363EAB1CF7EFECD /* Pods-FillITheBlanksGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = DK55D35UB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FillITheBlanksGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -628,7 +696,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGame;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/macbook/Documents/FillInTheBlanksGame/FillITheBlanksGame/FillITheBlanksGame/Application/FillITheBlanksGame-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/sonjoyborkakoty/Documents/Wikipedia-fill-in-the-blank-game-App-using-MVVM-main/FillITheBlanksGame/FillITheBlanksGame-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -641,7 +709,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = DK55D35UB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -661,7 +729,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = DK55D35UB7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -680,7 +748,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = 5D48VB9VL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGameUITests;
@@ -698,7 +766,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 24F82U865Y;
+				DEVELOPMENT_TEAM = 5D48VB9VL7;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.pcsassam.FillITheBlanksGameUITests;
