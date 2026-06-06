@@ -20,7 +20,9 @@ jobs:
     # 4. Select and set the exact Xcode version required
     - name: Select Xcode Version
       run: |
-        sudo xcode-select -s /Applications/Xcode_15.4.app/Contents/Developer
+        # Find the path of the latest available version cleanly
+        XCODE_PATH=$(xcrun find xcodebuild | sed 's|/usr/bin/xcodebuild||')
+        sudo xcode-select -s "$XCODE_PATH"
         xcodebuild -version
 
     # 5. Optional: Resolve Swift Package Manager Dependencies
