@@ -38,14 +38,15 @@ jobs:
     #      echo "warning: SwiftLint not installed on runner, skipping audit."
     #    fi
 
-    #- name: Show Destinations
-    #  run: xcodebuild -scheme FillITheBlanksGame -showdestinations
+    - name: Show Destinations
+      run: xcodebuild -scheme FillITheBlanksGame -showdestinations
   
     # 7. Execute the Test Suite using an iPhone Simulator
     # CRITICAL: Replace 'YOUR_SCHEME_NAME' with your real Xcode project scheme!
-    - name: Run Tests
+    - name: Run Unit and UI Tests
       run: |
         xcodebuild test \
           -project FillITheBlanksGame.xcodeproj \
           -scheme FillITheBlanksGame \
-          -destination 'platform=iOS Simulator,name=iPhone 16'
+          -destination 'platform=iOS Simulator,name=iPhone 16 Pro Max,OS=26' \
+          -enableCodeCoverage YES
