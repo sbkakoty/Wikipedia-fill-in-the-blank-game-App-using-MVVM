@@ -40,14 +40,14 @@ jobs:
       - name: Show Destinations
         run: |
           xcodebuild \
-            -workspace FillITheBlanksGame.xcworkspace \
+            -workspace FillITheBlanksGame.xcodeproj \
             -scheme FillITheBlanksGame \
             -showdestinations
 
       - name: Run Tests
         run: |
           xcodebuild test \
-            -workspace FillITheBlanksGame.xcworkspace \
+            -workspace FillITheBlanksGame.xcodeproj \
             -scheme FillITheBlanksGame \
             -destination 'platform=iOS Simulator,name=iPhone 16' \
             -enableCodeCoverage YES
