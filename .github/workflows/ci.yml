@@ -18,11 +18,6 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
-    # 2. Install CocoaPods dependencies on the cloud runner
-    - name: Install CocoaPods
-      run: |
-        pod install
         
       - name: Show Xcode Version
         run: |
@@ -44,6 +39,10 @@ jobs:
             -project FillITheBlanksGame.xcodeproj \
             -scheme FillITheBlanksGame \
             -showdestinations
+
+        - name: Install CocoaPods
+        run: |
+            pod install
 
       - name: Run Tests
         run: |
