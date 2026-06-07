@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - dev
+
   pull_request:
     branches:
       - main
@@ -17,24 +18,24 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-        
+
       - name: Show Xcode Version
         run: |
           xcodebuild -version
 
-      - name: Show Available Simulators
+      - name: Install CocoaPods
         run: |
-          xcrun simctl list devices available
+          pod install
 
       - name: Resolve Swift Packages
         run: |
           xcodebuild \
             -resolvePackageDependencies \
-            -project FillITheBlanksGame.xcodeproj
+            -workspace FillITheBlanksGame.xcworkspace
 
-      - name: Install CocoaPods
+      - name: Show Available Simulators
         run: |
-          pod install
+          xcrun simctl list devices available
 
       - name: Show Destinations
         run: |
@@ -48,5 +49,5 @@ jobs:
           xcodebuild test \
             -workspace FillITheBlanksGame.xcworkspace \
             -scheme FillITheBlanksGame \
-            -destination 'platform=iOS Simulator,name=Any iOS Simulator Device' \
+            -destination 'platform=iOS Simulator,name=iPhone 16' \
             -enableCodeCoverage YES
